@@ -1,3 +1,5 @@
 using Test
 
-include("MultipleChoice.jl")
+include("HasOther.jl")
+include("MultipleValues.jl")
+include("FormSpec.jl")

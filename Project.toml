@@ -2,3 +2,6 @@ name = "GoogleFormsProcessor"
 uuid = "7655eb12-8a58-4aa8-a8ef-a7d8dae9b3b7"
 authors = ["Firmansyah Adiputra <frm.adiputra@gmail.com>"]
 version = "0.1.0"
+
+[deps]
+DataFrames = "a93c6f00-e57d-5684-b7b6-d8193f3e46c0"
