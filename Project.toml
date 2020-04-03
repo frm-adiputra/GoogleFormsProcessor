@@ -1,0 +1,4 @@
+name = "GoogleFormsProcessor"
+uuid = "7655eb12-8a58-4aa8-a8ef-a7d8dae9b3b7"
+authors = ["Firmansyah Adiputra <frm.adiputra@gmail.com>"]
+version = "0.1.0"
