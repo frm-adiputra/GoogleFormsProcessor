@@ -1,7 +1,7 @@
 using GoogleFormsProcessor
 using DataFrames
 
-@testset "HasOther" begin
+@testset "MultipleValues" begin
     df = DataFrame(Col = [
         "a, b, c"
         "a, b"
