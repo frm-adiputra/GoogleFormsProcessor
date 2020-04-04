@@ -8,6 +8,7 @@ using DataFrames
         "a"
         "a, d, c"
         "a, d, c, e"
+        missing
     ])
 
     result = generate(MultipleValues(:Col, ["a", "b", "c"]), df)
@@ -18,11 +19,13 @@ using DataFrames
         true
         true
         true
+        false
     ]
 
     @test result[2].data == [
         true
         true
+        false
         false
         false
         false
@@ -34,5 +37,6 @@ using DataFrames
         missing
         "d"
         "d, e"
+        missing
     ])
 end

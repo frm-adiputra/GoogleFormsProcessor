@@ -5,11 +5,6 @@ struct MultipleValues <: AbstractQuestionSpec
     values::Vector{String}
 end
 
-function splittedSet(v::String)
-    s = Set([strip(x) for x in split(v, ",")])
-    delete!(s, "")
-end
-
 function generate(s::MultipleValues, df::DataFrame)::Vector{QuestionSpecResult}
     dfr = DataFrame()
     n = nrow(df)
@@ -21,6 +16,10 @@ function generate(s::MultipleValues, df::DataFrame)::Vector{QuestionSpecResult}
 
     d = df[!, s.name]
     for i in eachindex(d)
+        if ismissing(d[i])
+            continue
+        end
+
         sv = [strip(x) for x in split(d[i], ",")]
         others = []
         for e in sv
