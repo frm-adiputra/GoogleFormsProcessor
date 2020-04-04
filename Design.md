@@ -1,5 +1,6 @@
 ## Pipeline
 
+- Collect data (from Google Sheets)
 - Tidy data?
 - Processing answers
   - Process questions with "other" answers
