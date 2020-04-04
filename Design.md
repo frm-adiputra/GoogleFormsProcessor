@@ -22,3 +22,19 @@ Aggregates needed
 
 - Summary for each question (can be filtered)
 - Custom (for grouping)
+
+## Form Processor
+
+Question type | Processor | Aggregation
+-|-|-
+Checkboxes | MultipleValues | count (excluding "other" option)
+Multiple choice | no need | count
+Multiple choice (has "other" option) | HasOther | count (excluding "other" option)
+Dropdown | no need | count
+Linear scale | no need | count, average
+Multiple choice grid (each row) | no need | count
+Checkbox grid (each row) | MultipleValues | count
+Date | |
+Date with time | |
+Time | |
+Duration | |
