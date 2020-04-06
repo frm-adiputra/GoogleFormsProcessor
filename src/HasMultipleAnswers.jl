@@ -42,3 +42,18 @@ function generate(q::AbstractHasMultipleAnswers, df::DataFrame)::Vector{Question
     end
     result
 end
+
+function describe(q::AbstractHasMultipleAnswers, df::DataFrame)
+    dfr = DataFrame()
+    dfr[!, q.name] = []
+    dfr[!, :N] = []
+
+    for v in q.values
+        n = length(df[df[!, valueColName(q.name, v)] .=== true, q.name])
+        push!(dfr, (v, n))
+    end
+
+    # other values
+    push!(dfr, (otherName, length(collect(skipmissing(df[!, otherColName(q.name)])))))
+    return dfr
+end

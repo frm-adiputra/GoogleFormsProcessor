@@ -3,6 +3,6 @@ struct Checkboxes <: AbstractHasMultipleAnswers
     values::Vector{String}
 end
 
-function describe(q::Checkboxes, df::DataFrame)
-    by(df, q.name, N = q.name => length)
-end
+# function describe(q::Checkboxes, df::DataFrame)
+#     by(df, q.name, N = q.name => length)
+# end

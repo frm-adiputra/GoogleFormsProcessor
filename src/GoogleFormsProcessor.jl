@@ -3,15 +3,18 @@ module GoogleFormsProcessor
 export FormSpec
 export generate
 export Dropdown, Checkboxes, MultipleChoice, describe
+export valueColName, otherColName, otherName
 
 using DataFrames
+
+const otherName = "other"
 
 function valueColName(col::Symbol, value)
     Symbol(col, " -- ", "'", value, "'")
 end
 
 function otherColName(col::Symbol)
-    Symbol(col, " -- __other__")
+    Symbol(col, " -- _$(otherName)_")
 end
 
 include("types.jl")

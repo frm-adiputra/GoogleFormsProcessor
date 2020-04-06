@@ -27,11 +27,11 @@ using DataFrames
         ]), df)) == [
             Symbol("A")
             Symbol("B")
-            Symbol("A -- __other__")
-            Symbol("B -- 'a'")
-            Symbol("B -- 'b'")
-            Symbol("B -- 'c'")
-            Symbol("B -- __other__")
+            otherColName(:A)
+            valueColName(:B, "a")
+            valueColName(:B, "b")
+            valueColName(:B, "c")
+            otherColName(:B)
         ]
     end
 

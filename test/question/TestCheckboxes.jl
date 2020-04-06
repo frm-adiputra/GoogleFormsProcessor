@@ -9,28 +9,28 @@ using DataFrames
         @test length(result) == 4
     end
 
-    # @testset "describe" begin
-    #     df = DataFrame(Col = [
-    #         "a"
-    #         "b"
-    #         "a"
-    #         "b"
-    #         "a"
-    #         missing
-    #     ])
+    @testset "describe" begin
+        df = DataFrame(Col = [
+            "a"
+            "b"
+            "a"
+            "b"
+            "a"
+            missing
+        ])
 
-    #     result = GoogleFormsProcessor.describe(Dropdown(:Col, ["a", "b", "c"]), df)
+        result = GoogleFormsProcessor.describe(Dropdown(:Col, ["a", "b", "c"]), df)
 
-    #     @test isequal(result[!, :Col], [
-    #         "a"
-    #         "b"
-    #         missing
-    #     ])
+        @test isequal(result[!, :Col], [
+            "a"
+            "b"
+            missing
+        ])
 
-    #     @test isequal(result[!, :N], [
-    #         3
-    #         2
-    #         1
-    #     ])
-    # end
+        @test isequal(result[!, :N], [
+            3
+            2
+            1
+        ])
+    end
 end

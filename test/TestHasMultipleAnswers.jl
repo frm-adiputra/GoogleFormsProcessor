@@ -1,7 +1,7 @@
 using GoogleFormsProcessor
 using DataFrames
 
-@testset "generate data for HasMultipleAnswers" begin
+@testset "HasMultipleAnswers" begin
     df = DataFrame(Col = [
         "a, b, c"
         "a, b"
@@ -11,32 +11,43 @@ using DataFrames
         missing
     ])
 
-    result = GoogleFormsProcessor.generate(Checkboxes(:Col, ["a", "b", "c"]), df)
+    q = Checkboxes(:Col, ["a", "b", "c"])
 
-    @test result[1].data == [
-        true
-        true
-        true
-        true
-        true
-        false
-    ]
+    generatedResult = GoogleFormsProcessor.generate(FormSpec([q]), df)
+    describedResult = GoogleFormsProcessor.describe(q, generatedResult)
 
-    @test result[2].data == [
-        true
-        true
-        false
-        false
-        false
-        false
-    ]
+    @testset "generate" begin
+        @test generatedResult[!, valueColName(:Col, "a")] == [
+            true
+            true
+            true
+            true
+            true
+            false
+        ]
 
-    @test isequal(result[4].data, [
-        missing
-        missing
-        missing
-        "d"
-        "d, e"
-        missing
-    ])
+        @test generatedResult[!, valueColName(:Col, "b")] == [
+            true
+            true
+            false
+            false
+            false
+            false
+        ]
+
+        @test isequal(generatedResult[!, otherColName(:Col)], [
+            missing
+            missing
+            missing
+            "d"
+            "d, e"
+            missing
+        ])
+    end
+
+    @testset "describe" begin
+        @test nrow(describedResult) === 4
+        @test isequal(describedResult[!, 1], ["a", "b", "c", otherName])
+        @test isequal(describedResult[!, :N], [5, 2, 3, 2])
+    end
 end

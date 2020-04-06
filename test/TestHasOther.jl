@@ -6,7 +6,7 @@ using DataFrames
 
     # @test HasOther(:A, [1:3;]).options == [1:3;]
 
-    @test GoogleFormsProcessor.generate(MultipleChoice(:A, [1, 3, 5]), df)[1].name == Symbol("A -- __other__")
+    @test GoogleFormsProcessor.generate(MultipleChoice(:A, [1, 3, 5]), df)[1].name == otherColName(:A)
 
     @test GoogleFormsProcessor.generate(MultipleChoice(:A, [1, 3, 5]), df)[1].data == [
         true
