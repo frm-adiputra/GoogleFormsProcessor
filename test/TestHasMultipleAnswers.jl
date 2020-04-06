@@ -1,7 +1,7 @@
 using GoogleFormsProcessor
 using DataFrames
 
-@testset "MultipleValues" begin
+@testset "generate data for HasMultipleAnswers" begin
     df = DataFrame(Col = [
         "a, b, c"
         "a, b"
@@ -11,7 +11,7 @@ using DataFrames
         missing
     ])
 
-    result = generate(MultipleValues(:Col, ["a", "b", "c"]), df)
+    result = GoogleFormsProcessor.generate(Checkboxes(:Col, ["a", "b", "c"]), df)
 
     @test result[1].data == [
         true

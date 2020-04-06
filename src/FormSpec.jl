@@ -1,12 +1,19 @@
-using DataFrames
-
 struct FormSpec
-    questionSpec::Vector{AbstractQuestionSpec}
+    questions::Dict{Symbol,AbstractQuestion}
+    FormSpec(v::Vector{<:AbstractQuestion}) = new(Dict{Symbol,AbstractQuestion}(x.name => x for x in v))
+end
+
+function describe(fs::FormSpec, questionName::Symbol, df::DataFrame)
+    if !haskey(fs.questions, questionName)
+        error("question name not found: $questionName")
+    end
+    q = fs.questions[questionName]
+    describe(q, df)
 end
 
 function generate(fs::FormSpec, df::DataFrame)
     dfcpy = copy(df)
-    for v in fs.questionSpec
+    for v in values(fs.questions)
         r = generate(v, df)
         for i in r
             dfcpy[!, i.name] = i.data

@@ -1,13 +1,15 @@
-using DataFrames
+# struct HasOther <: AbstractQuestionSpec
+#     name::Symbol
+#     options::Vector{Any}
+# end
 
-struct HasOther <: AbstractQuestionSpec
-    name::Symbol
-    options::Vector{Any}
+function generate(q::AbstractHasOtherAnswer, df::DataFrame)::Vector{QuestionSpecResult}
+    [QuestionSpecResult(
+        otherColName(q.name),
+        [ x in q.values for x in df[!, q.name]]
+    );]
 end
 
-function generate(v::HasOther, df::DataFrame)::Vector{QuestionSpecResult}
-    [QuestionSpecResult(
-        otherColName(v.name),
-        [ x in v.options for x in df[!, v.name]]
-    );]
+function describe(q::AbstractHasOtherAnswer, df::DataFrame)
+    by(df, q.name, N = q.name => length)
 end

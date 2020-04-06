@@ -27,13 +27,13 @@ Aggregates needed
 
 Question type | Processor | Aggregation
 -|-|-
-Checkboxes | MultipleValues | count (excluding "other" option)
+Checkboxes | HasMultipleAnswers | count (excluding "other" option)
 Multiple choice | no need | count
-Multiple choice (has "other" option) | HasOther | count (excluding "other" option)
+Multiple choice (has "other" option) | HasOtherAnswer | count (excluding "other" option)
 Dropdown | no need | count
 Linear scale | no need | count, average
 Multiple choice grid (each row) | no need | count
-Checkbox grid (each row) | MultipleValues | count
+Checkbox grid (each row) | HasMultipleAnswers | count
 Date | |
 Date with time | |
 Time | |

@@ -1,5 +1,8 @@
 using Test
 
-include("HasOther.jl")
-include("MultipleValues.jl")
-include("FormSpec.jl")
+include("TestHasOther.jl")
+include("TestHasMultipleAnswers.jl")
+include("TestFormSpec.jl")
+
+include("question/TestDropdown.jl")
+include("question/TestCheckboxes.jl")
