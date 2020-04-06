@@ -10,6 +10,7 @@ using DataFrames
 otherName = "other"
 
 function setOtherName(v)
+    global otherName
     otherName = v
 end
 
