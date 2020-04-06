@@ -1,7 +1,7 @@
 module GoogleFormsProcessor
 
 export FormSpec
-export Dropdown, Checkboxes, MultipleChoice, ShortAnswer
+export Dropdown, Checkboxes, MultipleChoice, ShortAnswer, Paragraph
 export generate, describe
 export valueColName, otherColName, setOtherName, otherName
 
@@ -30,5 +30,6 @@ include("question/Dropdown.jl")
 include("question/Checkboxes.jl")
 include("question/MultipleChoice.jl")
 include("question/ShortAnswer.jl")
+include("question/Paragraph.jl")
 
 end # module

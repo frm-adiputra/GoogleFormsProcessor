@@ -1,11 +1,11 @@
-struct ShortAnswer <: AbstractQuestion
+struct Paragraph <: AbstractQuestion
     name::Symbol
 end
 
-function generate(q::ShortAnswer, df::DataFrame)::Vector{QuestionSpecResult}
+function generate(q::Paragraph, df::DataFrame)::Vector{QuestionSpecResult}
     []
 end
 
-function describe(q::ShortAnswer, df::DataFrame)
+function describe(q::Paragraph, df::DataFrame)
     by(df, q.name, N = q.name => length)
 end
