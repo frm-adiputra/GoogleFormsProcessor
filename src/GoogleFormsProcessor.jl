@@ -3,7 +3,7 @@ module GoogleFormsProcessor
 export FormSpec
 export generate
 export Dropdown, Checkboxes, MultipleChoice, describe
-export valueColName, otherColName, setOtherName
+export valueColName, otherColName, setOtherName, otherName
 
 using DataFrames
 
