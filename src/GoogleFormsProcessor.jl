@@ -1,8 +1,8 @@
 module GoogleFormsProcessor
 
 export FormSpec
-export generate
-export Dropdown, Checkboxes, MultipleChoice, describe
+export Dropdown, Checkboxes, MultipleChoice, ShortAnswer
+export generate, describe
 export valueColName, otherColName, setOtherName, otherName
 
 using DataFrames
@@ -29,5 +29,6 @@ include("HasMultipleAnswers.jl")
 include("question/Dropdown.jl")
 include("question/Checkboxes.jl")
 include("question/MultipleChoice.jl")
+include("question/ShortAnswer.jl")
 
 end # module

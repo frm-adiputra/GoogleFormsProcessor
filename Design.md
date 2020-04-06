@@ -38,3 +38,5 @@ Date | |
 Date with time | |
 Time | |
 Duration | |
+Short answer (number input) | ? | ?
+Paragraph | |
