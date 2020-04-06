@@ -7,7 +7,7 @@ export valueColName, otherColName, otherName
 
 using DataFrames
 
-const otherName = "other"
+otherName = "other"
 
 function valueColName(col::Symbol, value)
     Symbol(col, " -- ", "'", value, "'")
