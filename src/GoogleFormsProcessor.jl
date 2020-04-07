@@ -2,7 +2,7 @@ module GoogleFormsProcessor
 
 export FormSpec
 export Dropdown, Checkboxes, MultipleChoice, ShortAnswer, Paragraph
-export generate, describe
+export generate, describe, describeMatrix
 export valueColName, otherColName, otherFlagColName, setOtherName, otherName
 
 using DataFrames
