@@ -47,13 +47,16 @@ function describe(q::AbstractHasMultipleAnswers, df::DataFrame)
     dfr = DataFrame()
     dfr[!, q.name] = []
     dfr[!, :N] = []
+    dfr[!, :P] = []
+    ntot = nrow(df)
 
     for v in q.values
         n = length(df[df[!, valueColName(q.name, v)] .=== true, q.name])
-        push!(dfr, (v, n))
+        push!(dfr, (v, n, (n/ntot)*100))
     end
 
     # other values
-    push!(dfr, (otherName, length(collect(skipmissing(df[!, otherColName(q.name)])))))
+    nother = length(collect(skipmissing(df[!, otherColName(q.name)])))
+    push!(dfr, (otherName, nother, (nother/ntot)*100))
     return dfr
 end

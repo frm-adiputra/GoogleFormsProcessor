@@ -11,5 +11,6 @@ function generate(q::AbstractHasOtherAnswer, df::DataFrame)::Vector{QuestionSpec
 end
 
 function describe(q::AbstractHasOtherAnswer, df::DataFrame)
-    by(df, q.name, N = q.name => length)
+    ntot = nrow(df)
+    by(df, q.name, N = q.name => length, P = [q.name] => x -> (length(x[q.name])/ntot) * 100)
 end

@@ -32,4 +32,14 @@ include("question/MultipleChoice.jl")
 include("question/ShortAnswer.jl")
 include("question/Paragraph.jl")
 
+# export scrap
+
+# function scrap()
+#     df = DataFrame(
+#         A = ["a", "b", "a", "a"]
+#     )
+#     ntot = nrow(df)
+#     by(df, :A, N = :A => length, P = [:A] => x -> (length(x[:A])/ntot) * 10)
+# end
+
 end # module
