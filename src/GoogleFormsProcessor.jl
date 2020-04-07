@@ -3,7 +3,7 @@ module GoogleFormsProcessor
 export FormSpec
 export Dropdown, Checkboxes, MultipleChoice, ShortAnswer, Paragraph
 export generate, describe
-export valueColName, otherColName, setOtherName, otherName
+export valueColName, otherColName, otherFlagColName, setOtherName, otherName
 
 using DataFrames
 
@@ -20,6 +20,10 @@ end
 
 function otherColName(col::Symbol)
     Symbol(col, " -- _$(otherName)_")
+end
+
+function otherFlagColName(col::Symbol)
+    Symbol(col, " -- _$(otherName)_flag_")
 end
 
 include("types.jl")
