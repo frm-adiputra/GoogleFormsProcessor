@@ -11,7 +11,7 @@ function generate(q::AbstractHasMultipleAnswers, df::DataFrame)::Vector{Question
         dfr[!, valueColName(q.name, c)] = fill(false, n)
     end
     dfr[!, otherColName(q.name)] = Array{Union{Missing, String}}(missing, n)
-    dfr[!, otherFlagColName(q.name)] = Array{Bool}(false, n)
+    dfr[!, otherFlagColName(q.name)] = fill(false, n)
 
     d = df[!, q.name]
     for i in eachindex(d)
@@ -64,9 +64,9 @@ function describe(q::AbstractHasMultipleAnswers, df::DataFrame)
 end
 
 function describeMatrix(q::AbstractHasMultipleAnswers, df::DataFrame)
-    longColNames = [valueColName(q.name, v) for v in q.values]
+    longColNames = [[valueColName(q.name, v) for v in q.values]; otherFlagColName(q.name)]
     result = by(df, longColNames, N = q.name => length)
-    rename!(result, Symbol.(q.values))
-    sort!(result, Symbol.(q.values))
+    rename!(result, [Symbol.(q.values); Symbol(otherName); :N])
+    sort!(result, [Symbol.(q.values); Symbol(otherName)])
     result
 end

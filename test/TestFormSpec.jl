@@ -4,8 +4,8 @@ using DataFrames
 @testset "FormSpec" begin
     @testset "constructor" begin
         fs = FormSpec([
-            Dropdown(:ColA, ["a", "b", "c"]),
-            Dropdown(:ColB, ["a", "b", "c"])
+            Dropdown(:ColA),
+            Dropdown(:ColB)
         ])
 
         @test fs.questions[:ColA].name == :ColA
@@ -32,6 +32,7 @@ using DataFrames
             valueColName(:B, "b")
             valueColName(:B, "c")
             otherColName(:B)
+            otherFlagColName(:B)
         ]
     end
 

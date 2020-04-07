@@ -4,7 +4,7 @@ using DataFrames
 @testset "Dropdown" begin
     @testset "generate" begin
         df = DataFrame(Col = [ "a"; "b" ])
-        result = generate(Dropdown(:Col, ["a", "b", "c"]), df)
+        result = generate(Dropdown(:Col), df)
 
         @test length(result) == 0
     end
@@ -19,7 +19,7 @@ using DataFrames
             missing
         ])
 
-        result = GoogleFormsProcessor.describe(Dropdown(:Col, ["a", "b", "c"]), df)
+        result = GoogleFormsProcessor.describe(Dropdown(:Col), df)
 
         @test isequal(result[!, :Col], [
             "a"

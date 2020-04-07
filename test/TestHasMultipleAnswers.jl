@@ -15,6 +15,7 @@ using DataFrames
 
     generatedResult = GoogleFormsProcessor.generate(FormSpec([q]), df)
     describedResult = GoogleFormsProcessor.describe(q, generatedResult)
+    describeMatrixResult = GoogleFormsProcessor.describeMatrix(q, generatedResult)
 
     @testset "generate" begin
         @test generatedResult[!, valueColName(:Col, "a")] == [
@@ -49,5 +50,14 @@ using DataFrames
         @test nrow(describedResult) === 4
         @test isequal(describedResult[!, 1], ["a", "b", "c", otherName])
         @test isequal(describedResult[!, :N], [5, 2, 3, 2])
+    end
+
+    @testset "describeMatrix" begin
+        @test isequal(names(describeMatrixResult), [:a, :b, :c, :other, :N])
+        @test isequal(describeMatrixResult[!, :a], [false; fill(true, 4)])
+        @test isequal(describeMatrixResult[!, :b], [fill(false, 3); fill(true, 2)])
+        @test isequal(describeMatrixResult[!, :c], [false, false, true, false, true])
+        @test isequal(describeMatrixResult[!, :other], [false, false, true, false, false])
+        @test isequal(describeMatrixResult[!, :N], [1, 1, 2, 1, 1])
     end
 end
