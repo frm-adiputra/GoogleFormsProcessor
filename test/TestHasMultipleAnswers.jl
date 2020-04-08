@@ -16,6 +16,7 @@ using DataFrames
     generatedResult = GoogleFormsProcessor.generate(FormSpec([q]), df)
     describedResult = GoogleFormsProcessor.describe(q, generatedResult)
     describeMatrixResult = GoogleFormsProcessor.describeMatrix(q, generatedResult)
+    textAnswersResult = GoogleFormsProcessor.textAnswers(q, generatedResult)
 
     @testset "generate" begin
         @test generatedResult[!, valueColName(:Col, "a")] == [
@@ -60,5 +61,11 @@ using DataFrames
         @test isequal(describeMatrixResult[!, :other], [true, false, false, false, false])
         @test isequal(describeMatrixResult[!, :N], [2, 1, 1, 1, 1])
         @test isequal(describeMatrixResult[!, :P], [(2/6)*100, (1/6)*100, (1/6)*100, (1/6)*100, (1/6)*100])
+    end
+
+    @testset "textAnswers" begin
+        @test names(textAnswersResult) == Symbol.(["Isian lainnya", "N"])
+        @test textAnswersResult[!, 1] == ["d", "d, e"]
+        @test textAnswersResult[!, 2] == [1, 1]
     end
 end

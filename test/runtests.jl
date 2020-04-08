@@ -1,7 +1,8 @@
 using Test
 
-include("TestHasOther.jl")
+include("TestHasOtherAnswers.jl")
 include("TestHasMultipleAnswers.jl")
+include("TestHasTextAnswers.jl")
 include("TestFormSpec.jl")
 
 include("question/TestDropdown.jl")

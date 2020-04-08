@@ -1,4 +1,4 @@
-struct MultipleChoice <: AbstractHasOtherAnswer
+struct MultipleChoice <: AbstractHasOtherAnswers
     name::Symbol
     values::Vector
 end
