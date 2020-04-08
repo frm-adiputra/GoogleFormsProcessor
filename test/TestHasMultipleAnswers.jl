@@ -47,9 +47,9 @@ using DataFrames
     end
 
     @testset "describe" begin
-        @test nrow(describedResult) === 4
-        @test isequal(describedResult[!, 1], ["a", "b", "c", otherName])
-        @test isequal(describedResult[!, :N], [5, 2, 3, 2])
+        @test nrow(describedResult) === 5
+        @test isequal(describedResult[!, 1], ["a", "b", "c", otherName, missing])
+        @test isequal(describedResult[!, :N], [5, 2, 3, 2, 1])
     end
 
     @testset "describeMatrix" begin

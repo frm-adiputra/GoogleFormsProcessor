@@ -60,6 +60,10 @@ function describe(q::AbstractHasMultipleAnswers, df::DataFrame)
     # other values
     nother = length(collect(skipmissing(df[!, otherColName(q.name)])))
     push!(dfr, (otherName, nother, (nother/ntot)*100))
+
+    # missing values
+    nmiss = length(df[ismissing.(df[!, q.name]), q.name])
+    push!(dfr, (missing, nmiss, (nmiss/ntot)*100))
     return dfr
 end
 
