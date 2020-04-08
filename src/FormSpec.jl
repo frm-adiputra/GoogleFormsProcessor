@@ -19,6 +19,14 @@ function describeMatrix(fs::FormSpec, questionName::Symbol, df::DataFrame)
     describeMatrix(q, df)
 end
 
+function textAnswers(fs::FormSpec, questionName::Symbol, df::DataFrame)
+    if !haskey(fs.questions, questionName)
+        error("question name not found: $questionName")
+    end
+    q = fs.questions[questionName]
+    textAnswers(q, df)
+end
+
 function generate(fs::FormSpec, df::DataFrame)
     dfcpy = copy(df)
     for v in values(fs.questions)
