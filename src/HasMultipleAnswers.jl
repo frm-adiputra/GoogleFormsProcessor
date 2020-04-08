@@ -69,7 +69,7 @@ function describeMatrix(q::AbstractHasMultipleAnswers, df::DataFrame)
 
     result = by(df, longColNames, N = q.name => length, P = [q.name] => x -> (length(x[q.name])/ntot) * 100)
     rename!(result, [Symbol.(q.values); Symbol(otherName); :N; :P])
-    sort!(result, [Symbol.(q.values); Symbol(otherName)])
+    sort!(result, :N, rev = true)
 
     result
 end

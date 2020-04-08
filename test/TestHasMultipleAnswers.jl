@@ -54,11 +54,11 @@ using DataFrames
 
     @testset "describeMatrix" begin
         @test isequal(names(describeMatrixResult), [:a, :b, :c, :other, :N, :P])
-        @test isequal(describeMatrixResult[!, :a], [false; fill(true, 4)])
-        @test isequal(describeMatrixResult[!, :b], [fill(false, 3); fill(true, 2)])
-        @test isequal(describeMatrixResult[!, :c], [false, false, true, false, true])
-        @test isequal(describeMatrixResult[!, :other], [false, false, true, false, false])
-        @test isequal(describeMatrixResult[!, :N], [1, 1, 2, 1, 1])
-        @test isequal(describeMatrixResult[!, :P], [(1/6)*100, (1/6)*100, (2/6)*100, (1/6)*100, (1/6)*100])
+        @test isequal(describeMatrixResult[!, :a], [true, true, true, true, false])
+        @test isequal(describeMatrixResult[!, :b], [false, true, true, false, false])
+        @test isequal(describeMatrixResult[!, :c], [true, true, false, false, false])
+        @test isequal(describeMatrixResult[!, :other], [true, false, false, false, false])
+        @test isequal(describeMatrixResult[!, :N], [2, 1, 1, 1, 1])
+        @test isequal(describeMatrixResult[!, :P], [(2/6)*100, (1/6)*100, (1/6)*100, (1/6)*100, (1/6)*100])
     end
 end
