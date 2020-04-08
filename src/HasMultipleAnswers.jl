@@ -81,5 +81,5 @@ end
 function textAnswers(q::AbstractHasMultipleAnswers, df::DataFrame)
     dd = by(dropmissing(df, otherColName(q.name)), otherColName(q.name), N = q.name => length)
     sort!(dd, [:N, otherColName(q.name)], rev = (true, false))
-    rename!(dd, [Symbol("Isian lainnya"); :N])
+    rename!(dd, [Symbol(q.name, " --- Isian lainnya"); :N])
 end

@@ -64,7 +64,7 @@ using DataFrames
     end
 
     @testset "textAnswers" begin
-        @test names(textAnswersResult) == Symbol.(["Isian lainnya", "N"])
+        @test names(textAnswersResult) == Symbol.(["Col --- Isian lainnya", "N"])
         @test textAnswersResult[!, 1] == ["d", "d, e"]
         @test textAnswersResult[!, 2] == [1, 1]
     end

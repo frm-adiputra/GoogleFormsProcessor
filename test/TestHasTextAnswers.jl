@@ -20,8 +20,8 @@ using DataFrames
     textAnswersResult = GoogleFormsProcessor.textAnswers(q, generatedResult)
 
     @testset "textAnswers" begin
-        @test names(textAnswersResult) == Symbol.(["Isian", "N"])
-        @test isequal(textAnswersResult[!, :Isian], ["ab", "a", "abc", "adc", "adce", missing])
-        @test textAnswersResult[!, :N] == [3, 2, 1, 1, 1, 1]
+        @test names(textAnswersResult) == Symbol.(["Col --- Isian", "N"])
+        @test isequal(textAnswersResult[!, 1], ["ab", "a", "abc", "adc", "adce", missing])
+        @test textAnswersResult[!, 2] == [3, 2, 1, 1, 1, 1]
     end
 end

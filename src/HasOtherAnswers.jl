@@ -14,5 +14,5 @@ function textAnswers(q::AbstractHasOtherAnswers, df::DataFrame)
     df0 = df[df[!, otherColName(q.name)] .=== true, :]
     dd = by(df0, q.name, N = q.name => length)
     sort!(dd, [:N, q.name], rev = (true, false))
-    rename!(dd, [Symbol("Isian lainnya"); :N])
+    rename!(dd, [Symbol(q.name, " --- Isian lainnya"); :N])
 end

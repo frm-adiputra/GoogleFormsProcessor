@@ -10,5 +10,5 @@ end
 function textAnswers(q::AbstractHasTextAnswers, df::DataFrame)
     dd = by(df, q.name, N = q.name => length)
     sort!(dd, [:N, q.name], rev = (true, false))
-    rename!(dd, [Symbol("Isian"); :N])
+    rename!(dd, [Symbol(q.name, " --- Isian"); :N])
 end

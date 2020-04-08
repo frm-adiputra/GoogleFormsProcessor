@@ -26,7 +26,7 @@ using DataFrames
         df = GoogleFormsProcessor.generate(FormSpec([q]), df0)
         result = textAnswers(q, df)
 
-        @test names(result) == Symbol.(["Isian lainnya", "N"])
+        @test names(result) == Symbol.(["A --- Isian lainnya", "N"])
         @test result[!, 1] == ["c", "d"]
         @test result[!, 2] == [2, 1]
     end
