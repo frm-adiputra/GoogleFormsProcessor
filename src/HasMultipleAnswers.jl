@@ -64,9 +64,12 @@ function describe(q::AbstractHasMultipleAnswers, df::DataFrame)
 end
 
 function describeMatrix(q::AbstractHasMultipleAnswers, df::DataFrame)
+    ntot = nrow(df)
     longColNames = [[valueColName(q.name, v) for v in q.values]; otherFlagColName(q.name)]
-    result = by(df, longColNames, N = q.name => length)
-    rename!(result, [Symbol.(q.values); Symbol(otherName); :N])
+
+    result = by(df, longColNames, N = q.name => length, P = [q.name] => x -> (length(x[q.name])/ntot) * 100)
+    rename!(result, [Symbol.(q.values); Symbol(otherName); :N; :P])
     sort!(result, [Symbol.(q.values); Symbol(otherName)])
+
     result
 end
